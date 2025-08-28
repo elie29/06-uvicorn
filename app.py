@@ -1,5 +1,5 @@
 import asyncio
-from datetime import date
+from datetime import datetime
 from random import randint
 from fastapi import FastAPI
 import uvicorn
@@ -15,21 +15,21 @@ app = FastAPI(
 @app.get("/t1")
 async def root():
     timeout = randint(5, 30)
-    print(f"wait {timeout}s than respond {date.today()}")
+    print(f"wait {timeout}s than respond {datetime.now()}")
     await asyncio.sleep(timeout)
-    return {f"message: wait {timeout}s than respond {date.today()}"}
+    return {f"message: wait {timeout}s than respond {datetime.now()}"}
 
 
 @app.get("/t2")
 async def root():
-    print(f"wait 15s than respond {date.today()}")
+    print(f"wait 15s than respond {datetime.now()}")
     await asyncio.sleep(15)
-    return {f"message: wait 25s than respond {date.today()}"}
+    return {f"message: wait 25s than respond {datetime.now()}"}
 
 
 @app.get("/d")
 async def root():
-    return {f"message: respond direct: {date.today()}"}
+    return {f"message: respond direct: {datetime.now()}"}
 
 
 if __name__ == "__main__":
