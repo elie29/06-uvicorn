@@ -17,6 +17,7 @@ async def root():
     timeout = randint(5, 30)
     print(f"wait {timeout}s than respond {datetime.now()}")
     await asyncio.sleep(timeout)
+    print(f"Finished {datetime.now()}")
     return {f"message: wait {timeout}s than respond {datetime.now()}"}
 
 
@@ -24,6 +25,7 @@ async def root():
 async def root():
     print(f"wait 15s than respond {datetime.now()}")
     await asyncio.sleep(15)
+    print(f"Finished {datetime.now()}")
     return {f"message: wait 25s than respond {datetime.now()}"}
 
 
