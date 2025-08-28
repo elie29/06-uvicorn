@@ -12,20 +12,20 @@ app = FastAPI(
 )
 
 
-@app.get("/t1")
-async def root():
+@app.get("/t1/{user}")
+async def root(user: str):
     timeout = randint(5, 30)
-    print(f"wait {timeout}s than respond {datetime.now()}")
+    print(f"{user}wait {timeout}s than respond {datetime.now()}")
     await asyncio.sleep(timeout)
-    print(f"Finished {datetime.now()}")
+    print(f"{user} finished {datetime.now()}")
     return {f"message: wait {timeout}s than respond {datetime.now()}"}
 
 
-@app.get("/t2")
-async def root():
-    print(f"wait 15s than respond {datetime.now()}")
+@app.get("/t2/{user}")
+async def root(user: str):
+    print(f"{user} wait 15s than respond {datetime.now()}")
     await asyncio.sleep(15)
-    print(f"Finished {datetime.now()}")
+    print(f"{user} finished {datetime.now()}")
     return {f"message: wait 25s than respond {datetime.now()}"}
 
 
