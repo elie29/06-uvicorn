@@ -15,7 +15,7 @@ app = FastAPI(
 @app.get("/t1/{user}")
 async def root(user: str):
     timeout = randint(5, 30)
-    print(f"{user}wait {timeout}s than respond {datetime.now()}")
+    print(f"{user} wait {timeout}s than respond {datetime.now()}")
     await asyncio.sleep(timeout)
     print(f"{user} finished {datetime.now()}")
     return {f"message: wait {timeout}s than respond {datetime.now()}"}
