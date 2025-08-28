@@ -10,10 +10,15 @@ app = FastAPI(
 )
 
 
-@app.get("/")
+@app.get("/a")
 async def root():
-    asyncio.sleep(5)
+    await asyncio.sleep(5)
     return {"message: wait 5s than respond"}
+
+
+@app.get("/b")
+async def root():
+    return {"message: respond direct!"}
 
 
 if __name__ == "__main__":
