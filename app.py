@@ -1,4 +1,6 @@
 import asyncio
+from random import randint
+from syslog import syslog
 from fastapi import FastAPI
 import uvicorn
 
@@ -12,8 +14,10 @@ app = FastAPI(
 
 @app.get("/t1")
 async def root():
-    await asyncio.sleep(15)
-    return {"message: wait 15s than respond"}
+    timeout = randint(5, 30)
+    print(f"wait {timeout}s than respond")
+    await asyncio.sleep(timeout)
+    return {f"message: wait {timeout}s than respond"}
 
 
 @app.get("/t2")
