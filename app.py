@@ -1,6 +1,6 @@
 import asyncio
+from datetime import date
 from random import randint
-from syslog import syslog
 from fastapi import FastAPI
 import uvicorn
 
@@ -15,20 +15,21 @@ app = FastAPI(
 @app.get("/t1")
 async def root():
     timeout = randint(5, 30)
-    print(f"wait {timeout}s than respond")
+    print(f"wait {timeout}s than respond {date.today()}")
     await asyncio.sleep(timeout)
-    return {f"message: wait {timeout}s than respond"}
+    return {f"message: wait {timeout}s than respond {date.today()}"}
 
 
 @app.get("/t2")
 async def root():
+    print(f"wait 15s than respond {date.today()}")
     await asyncio.sleep(15)
-    return {"message: wait 25s than respond"}
+    return {f"message: wait 25s than respond {date.today()}"}
 
 
 @app.get("/d")
 async def root():
-    return {"message: respond direct!"}
+    return {f"message: respond direct: {date.today()}"}
 
 
 if __name__ == "__main__":
