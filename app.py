@@ -4,11 +4,10 @@ from random import randint
 from fastapi import FastAPI
 import uvicorn
 
-## App definition
 app = FastAPI(
-    title="Langchain Server",
+    title="Uvicorn Server",
     version="1.0",
-    description="A simple API server using Langchain runnable interfaces",
+    description="A simple API server",
 )
 
 
