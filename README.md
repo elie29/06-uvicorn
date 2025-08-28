@@ -1,4 +1,4 @@
-# Basic langChain
+# Basic Python Project
 
 ## Python Project Initialisation
 
@@ -8,5 +8,3 @@
 - `python -m pip install --upgrade pip`
 - `pip install -r requirements.txt`
 - for indentation: `black .` to format code
-- Do not commit .env
-- `pip freeze > requirements.txt` if we want to freeze exact version of a package
