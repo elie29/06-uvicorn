@@ -10,13 +10,19 @@ app = FastAPI(
 )
 
 
-@app.get("/a")
+@app.get("/t1")
 async def root():
-    await asyncio.sleep(5)
-    return {"message: wait 5s than respond"}
+    await asyncio.sleep(15)
+    return {"message: wait 15s than respond"}
 
 
-@app.get("/b")
+@app.get("/t2")
+async def root():
+    await asyncio.sleep(15)
+    return {"message: wait 25s than respond"}
+
+
+@app.get("/d")
 async def root():
     return {"message: respond direct!"}
 
