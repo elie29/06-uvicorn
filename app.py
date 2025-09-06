@@ -2,6 +2,7 @@ import asyncio
 from datetime import datetime
 from random import randint
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 import uvicorn
 
 app = FastAPI(
@@ -10,6 +11,10 @@ app = FastAPI(
     description="A simple API server",
 )
 
+# Serve favicon from root folder
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon():
+    return FileResponse("favicon.ico")
 
 @app.get("/t1/{user}")
 async def root(user: str):
@@ -31,6 +36,13 @@ async def root(user: str):
 @app.get("/d")
 async def root():
     return {f"message: respond direct: {datetime.now()}"}
+
+@app.get("/b")
+def root():
+    i = 0
+    while(i<1000000):
+        i += 1
+    return {f"message: respond blocked: {datetime.now()}"}
 
 
 if __name__ == "__main__":
